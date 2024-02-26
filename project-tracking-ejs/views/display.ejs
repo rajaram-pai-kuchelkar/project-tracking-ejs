@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>MGA Project Status</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+ 
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Project Status</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/add">Add Record</a>
+        </li>
+       
+      </ul>
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <h2>List of Open Projects</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th width="5%">Project Id</th>
+          <th width="20%">Project Title</th>
+          <th width="60%">Status</th>
+          <th width="15%">As on Date</th>
+          
+          <th width="10%">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(sampleData.length> 0)
+          {
+          sampleData.forEach(function(data){
+          %>
+          <tr>
+            <td>
+              <%= data.pid %>
+            </td>
+            <td>
+              <%= data.ptitle %>
+            </td>
+            <td>
+              <%= data.status %>
+            </td>
+            <td>
+              <%= data.latestdt.toDateString() %>
+            </td>
+            <td>
+              <a href="/edit/<%= data.pid %>" class="btn btn-primary btn-sm">Edit</a>
+            </td>
+          </tr>
+          <% }); } else{ %>
+            <tr>
+              <td colspan="2">No Data Found</td>
+            </tr>
+            <% } %>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+</html>
